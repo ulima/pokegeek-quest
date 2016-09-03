@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">PokeQuest</string>
+    <string name="salir">salir</string>
+    <string name="qr">QR</string>
 </resources>
