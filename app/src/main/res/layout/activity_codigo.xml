@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="ceids.ulima.edu.pe.pokequest.Codigo.CodigoActiviry">
+    <ImageView
+        android:id="@+id/logopu"
+        android:layout_width="249dp"
+        android:layout_height="378dp"
+        android:src="@drawable/pokeball"
+        android:layout_marginBottom="285dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_alignTop="@+id/eteSugerencias"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="No podra cambiar luego este codigo"
+        android:layout_above="@+id/eteSugerencias"
+        android:textStyle="bold"/>
+    <EditText
+        android:id="@+id/eteSugerencias"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:hint="Ingrese su codigo de la universidad"
+        android:inputType="number"
+        android:maxLength="8"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/btnSugerencia"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"/>
+
+
+    <Button
+        android:id="@+id/btnSugerencia"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:background="@color/colorPrimary"
+        android:text="ENVIAR"
+        android:layout_centerInParent="true"
+        android:textColor="#FFFF"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="60dp"
+        android:textSize="20dp"/>
+</RelativeLayout>
