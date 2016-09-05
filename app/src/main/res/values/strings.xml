@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">PokeQuest</string>
+    <string name="facebook_app_id">1660043210972477</string>
     <string name="salir">salir</string>
     <string name="qr">QR</string>
+    <string name="loading">Loading…</string>
 </resources>

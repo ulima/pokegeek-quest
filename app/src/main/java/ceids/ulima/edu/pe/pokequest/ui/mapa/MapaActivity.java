@@ -25,8 +25,12 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
+import java.util.Map;
+
+import ceids.ulima.edu.pe.pokequest.Login.LoginActiviry;
 import ceids.ulima.edu.pe.pokequest.R;
 import ceids.ulima.edu.pe.pokequest.ui.reto.RetoActivity;
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class MapaActivity extends AppCompatActivity implements OnMapReadyCallback {
     private DrawerLayout mDrawerLayout;
@@ -121,7 +125,12 @@ public class MapaActivity extends AppCompatActivity implements OnMapReadyCallbac
                 mDrawerLayout.openDrawer(GravityCompat.START);
                 break;
             case R.id.menPokemonQR:
-                new IntentIntegrator(MapaActivity.this).initiateScan();
+                IntentIntegrator integrator=new IntentIntegrator(this);
+                integrator.setDesiredBarcodeFormats(IntentIntegrator.ALL_CODE_TYPES);
+                integrator.setPrompt("Scan");
+                integrator.setCameraId(0);
+                integrator.setBeepEnabled(false);
+                integrator.initiateScan();
                 break;
         }
 
@@ -139,12 +148,32 @@ public class MapaActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
-        if (scanResult != null) {
+        if (!scanResult.getContents().equalsIgnoreCase(null) ) {
             Intent intent = new Intent(this, RetoActivity.class);
             intent.putExtra(RetoActivity.RETO_CODIGO, scanResult.getContents());
             startActivity(intent);
         }
 
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        new SweetAlertDialog(MapaActivity.this, SweetAlertDialog.WARNING_TYPE)
+                .setTitleText("Quiere Salir")
+                .setContentText("Usted saldra de su cuenta")
+                .setCancelText("No")
+                .setConfirmText("Si")
+                .showCancelButton(true)
+                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                    @Override
+                    public void onClick(SweetAlertDialog sweetAlertDialog) {
+                        Intent mainIntent = new Intent(MapaActivity.this,LoginActiviry.class);
+                        MapaActivity.this.startActivity(mainIntent);
+                        MapaActivity.this.finish();
+                    }
+                })
+                .show();
     }
 
 }
