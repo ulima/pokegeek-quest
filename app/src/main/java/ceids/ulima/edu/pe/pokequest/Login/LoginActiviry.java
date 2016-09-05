@@ -2,12 +2,8 @@ package ceids.ulima.edu.pe.pokequest.Login;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
-import android.view.View;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import com.facebook.AccessToken;
@@ -32,11 +28,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 import ceids.ulima.edu.pe.pokequest.BaseActivity;
 import ceids.ulima.edu.pe.pokequest.Codigo.CodigoActiviry;
-import ceids.ulima.edu.pe.pokequest.Menu.MenuActivity;
 import ceids.ulima.edu.pe.pokequest.R;
 import ceids.ulima.edu.pe.pokequest.beans.Correo;
 import ceids.ulima.edu.pe.pokequest.ui.mapa.MapaActivity;
@@ -196,7 +190,6 @@ public class LoginActiviry extends BaseActivity{
                                                 estado=false;
                                                 break;
                                             }
-
                                         }
                                         if (estado==false){
                                             Intent mainIntent = new Intent(LoginActiviry.this,MapaActivity.class);

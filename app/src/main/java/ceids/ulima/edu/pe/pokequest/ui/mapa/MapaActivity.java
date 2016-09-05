@@ -1,7 +1,6 @@
 package ceids.ulima.edu.pe.pokequest.ui.mapa;
 
 import android.content.Intent;
-import android.hardware.Camera;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
@@ -25,6 +24,8 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+
+import java.util.Map;
 
 import ceids.ulima.edu.pe.pokequest.Login.LoginActiviry;
 import ceids.ulima.edu.pe.pokequest.R;
@@ -124,13 +125,12 @@ public class MapaActivity extends AppCompatActivity implements OnMapReadyCallbac
                 mDrawerLayout.openDrawer(GravityCompat.START);
                 break;
             case R.id.menPokemonQR:
-                IntentIntegrator integrator=new IntentIntegrator(MapaActivity.this);
+                IntentIntegrator integrator=new IntentIntegrator(this);
                 integrator.setDesiredBarcodeFormats(IntentIntegrator.ALL_CODE_TYPES);
                 integrator.setPrompt("Scan");
                 integrator.setCameraId(0);
                 integrator.setBeepEnabled(false);
-                integrator.initiateScan();;
-
+                integrator.initiateScan();
                 break;
         }
 
@@ -148,12 +148,12 @@ public class MapaActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
-        if (scanResult != null) {
+        if (!scanResult.getContents().equalsIgnoreCase(null) ) {
             Intent intent = new Intent(this, RetoActivity.class);
-            Toast.makeText(this, "Scanned: " + scanResult.getContents(), Toast.LENGTH_LONG).show();
             intent.putExtra(RetoActivity.RETO_CODIGO, scanResult.getContents());
             startActivity(intent);
         }
+
 
     }
 

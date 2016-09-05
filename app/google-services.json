@@ -1,27 +1,27 @@
 {
   "project_info": {
-    "project_number": "177204520390",
-    "firebase_url": "https://pokegeek-6e88a.firebaseio.com",
-    "project_id": "pokegeek-6e88a",
-    "storage_bucket": "pokegeek-6e88a.appspot.com"
+    "project_number": "718288320020",
+    "firebase_url": "https://pokegeek-quest-1472915005105.firebaseio.com",
+    "project_id": "pokegeek-quest-1472915005105",
+    "storage_bucket": "pokegeek-quest-1472915005105.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:177204520390:android:b562fcdad99b7906",
+        "mobilesdk_app_id": "1:718288320020:android:b562fcdad99b7906",
         "android_client_info": {
           "package_name": "ceids.ulima.edu.pe.pokequest"
         }
       },
       "oauth_client": [
         {
-          "client_id": "177204520390-aibb2t6f9eqd1m8gdn24gemq45b3ulbb.apps.googleusercontent.com",
+          "client_id": "718288320020-eo5uq8i3kdoc2sptlbb10f8u9pari5pi.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCLHQZSlAxnd6PFy3kKJTl8h4ScSxaU_aI"
+          "current_key": "AIzaSyDsc4BN8rIH-oBboN_6fvtb3PkmgRYMw-U"
         }
       ],
       "services": {
