@@ -10,12 +10,9 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -25,7 +22,6 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
-import java.util.Map;
 
 import ceids.ulima.edu.pe.pokequest.Login.LoginActiviry;
 import ceids.ulima.edu.pe.pokequest.R;
@@ -37,28 +33,12 @@ public class MapaActivity extends AppCompatActivity implements OnMapReadyCallbac
     private ActionBarDrawerToggle mDrawerToggle;
     private GoogleMap mMap;
 
-
-
-
-//    private Button butScanQR;
-//    private TextView eteTextoQR;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mapa);
 
         setupViews();
-
-//        butScanQR = (Button) findViewById(R.id.butScanQR);
-//        eteTextoQR = (TextView) findViewById(R.id.eteTextoQR);
-
-//        butScanQR.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                new IntentIntegrator(MapaActivity.this).initiateScan();
-//            }
-//        });
     }
 
     private void setupViews() {
@@ -152,6 +132,8 @@ public class MapaActivity extends AppCompatActivity implements OnMapReadyCallbac
             Intent intent = new Intent(this, RetoActivity.class);
             intent.putExtra(RetoActivity.RETO_CODIGO, scanResult.getContents());
             startActivity(intent);
+        }else{
+            Log.i("MapaActivity", "Se regreso del QR Code");
         }
 
 
