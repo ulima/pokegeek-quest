@@ -19,12 +19,22 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import ceids.ulima.edu.pe.pokequest.Login.LoginActiviry;
 import ceids.ulima.edu.pe.pokequest.R;
+import ceids.ulima.edu.pe.pokequest.beans.Pokeparada;
 import ceids.ulima.edu.pe.pokequest.ui.reto.RetoActivity;
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
@@ -33,15 +43,20 @@ public class MapaActivity extends AppCompatActivity implements OnMapReadyCallbac
     private ActionBarDrawerToggle mDrawerToggle;
     private GoogleMap mMap;
 
+    private DatabaseReference mDb;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mapa);
 
         setupViews();
+
     }
 
+
     private void setupViews() {
+
         setupActionBar();
 
         setupMapFragment();
@@ -69,6 +84,36 @@ public class MapaActivity extends AppCompatActivity implements OnMapReadyCallbac
         ft.commit();
 
         mapFragment.getMapAsync(this);
+    }
+
+    private void setupData() {
+        mDb = FirebaseDatabase.getInstance().getReference();
+        cargarPokeparadas();
+
+    }
+
+    private void cargarPokeparadas(){
+        mDb.child("pokeparada").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                //List<Pokeparada> pokeparadas = new ArrayList<>();
+                for (DataSnapshot pp : dataSnapshot.getChildren()){
+                    Pokeparada pokeparada = pp.getValue(Pokeparada.class);
+
+                    mMap.addMarker(new MarkerOptions()
+                            .position(new LatLng(
+                                    pokeparada.getLatitud() / 1000000.0,
+                                    pokeparada.getLongitud() / 1000000.0))
+                            .title(pokeparada.getNombre()));
+                }
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
     private void setupNavigationDrawer() {
@@ -123,6 +168,8 @@ public class MapaActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         LatLng uLima = new LatLng(-12.085357, -76.971495);
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(uLima, 20));
+
+        setupData();
     }
 
     @Override

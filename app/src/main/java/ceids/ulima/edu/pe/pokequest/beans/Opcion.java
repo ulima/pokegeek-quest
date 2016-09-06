@@ -4,50 +4,35 @@ package ceids.ulima.edu.pe.pokequest.beans;
  * Created by CarlosGabriel on 4/09/2016.
  */
 public class Opcion {
-    String uno;
-    String dos;
-    String tres;
-    String cuatro;
+    private String codigo;
+    private String texto;
 
-    public Opcion(String uno, String dos, String tres, String cuatro) {
-        this.uno = uno;
-        this.dos = dos;
-        this.tres = tres;
-        this.cuatro = cuatro;
+    public Opcion(String codigo, String texto) {
+        this.codigo = codigo;
+        this.texto = texto;
     }
 
     public Opcion() {
     }
 
-    public String getUno() {
-        return uno;
+    public String getCodigo() {
+        return codigo;
     }
 
-    public void setUno(String uno) {
-        this.uno = uno;
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 
-    public String getDos() {
-        return dos;
+    public String getTexto() {
+        return texto;
     }
 
-    public void setDos(String dos) {
-        this.dos = dos;
+    public void setTexto(String texto) {
+        this.texto = texto;
     }
 
-    public String getTres() {
-        return tres;
-    }
-
-    public void setTres(String tres) {
-        this.tres = tres;
-    }
-
-    public String getCuatro() {
-        return cuatro;
-    }
-
-    public void setCuatro(String cuatro) {
-        this.cuatro = cuatro;
+    @Override
+    public String toString() {
+        return codigo + ") " + texto;
     }
 }

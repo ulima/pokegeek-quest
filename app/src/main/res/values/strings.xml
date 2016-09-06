@@ -4,4 +4,6 @@
     <string name="salir">salir</string>
     <string name="qr">QR</string>
     <string name="loading">Loading…</string>
+    <string name="lanzala">Lánzala</string>
+    <string name="ceids_presenta">CEIDS presenta....</string>
 </resources>

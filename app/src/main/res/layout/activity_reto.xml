@@ -1,72 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/scroll"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content">
-    <LinearLayout
-        android:orientation="vertical" android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="20dp"
-        android:paddingBottom="40dp">
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
 
-        <TextView
-            android:id="@+id/rTitulo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Pregunta X"
-            android:textStyle="bold"
-            android:textSize="30dp"
-            android:background="#FFFFFF"
-            android:gravity="center"/>
+    <TextView
+        android:id="@+id/rTitulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pregunta"
+        android:textStyle="bold"
+        android:textSize="30dp"
+        android:background="#FFFFFF"
+        android:gravity="center"/>
 
-        <ImageView
-            android:id="@+id/rImagen"
-            android:layout_width="fill_parent"
-            android:layout_height="304dp"
-            android:layout_marginTop="10dp"
-            android:layout_gravity="center"
-            android:src="@drawable/pokeball"
-            android:scaleType="fitXY"/>
-        <TextView
-            android:id="@+id/rDescripcion"
-            android:layout_marginTop="5dp"
-            android:layout_width="match_parent"
-            android:paddingTop="10dp"
-            android:layout_height="wrap_content"
-            android:textSize="15dp"
-            android:text="........................................."
-            android:background="#FFFFFF"/>
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Primera alternativa"
-            android:gravity="start"
-            android:id="@+id/A"
-            />
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Segunda alternativa"
-            android:gravity="start"
-            android:id="@+id/B"
-            />
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Tercera alternativa"
-            android:gravity="start"
-            android:id="@+id/C"
-            />
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Cuarta alternativa"
-            android:gravity="start"
-            android:id="@+id/D"
-            />
+    <ImageView
+        android:id="@+id/rImagen"
+        android:layout_width="fill_parent"
+        android:layout_height="304dp"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:src="@drawable/pokeball"
+        android:scaleType="fitCenter"/>
+    <TextView
+        android:id="@+id/rDescripcion"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:paddingTop="10dp"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:text="........................................."
+        android:background="#FFFFFF"/>
+    <Spinner
+        android:id="@+id/spiOpciones"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15pt"
+        android:layout_marginTop="@dimen/activity_vertical_margin"/>
+    <Button
+        android:id="@+id/butLanzar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/lanzala"
+        android:onClick="onLanzarClick"/>
 
-    </LinearLayout>
-</ScrollView>
+</LinearLayout>

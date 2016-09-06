@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.login.LoginManager;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -30,6 +31,7 @@ public class CodigoActiviry extends AppCompatActivity {
     TextView codigito;
     Button boton;
     DatabaseReference db;
+    FirebaseAuth mAuth;
     FirebaseHelper helper;
     private static DatabaseReference ref;
     ArrayList<Codigo> codigos=new ArrayList<>();
@@ -43,6 +45,7 @@ public class CodigoActiviry extends AppCompatActivity {
         boton=(Button) findViewById(R.id.btnSugerencia);
 
         db= FirebaseDatabase.getInstance().getReference();
+        mAuth = FirebaseAuth.getInstance();
 
         helper=new FirebaseHelper(db);
         boton.setOnClickListener(new View.OnClickListener() {
@@ -52,7 +55,7 @@ public class CodigoActiviry extends AppCompatActivity {
                 final String correito=getIntent().getStringExtra("correo").toString();
                 final Correo correo=new Correo(correito);
                 final String codigoinput=codigito.getText().toString();
-                final Codigo codigo=new Codigo(codigoinput+correito);
+                final Codigo codigo=new Codigo(codigoinput+ "=" + correito);
                 if(codigoinput.length()==8 && codigoinput!=null){
                     final FirebaseDatabase database = FirebaseDatabase.getInstance();
                     ref= database.getReference("Codigo");
@@ -73,7 +76,7 @@ public class CodigoActiviry extends AppCompatActivity {
 
                                 }
                                 if (estado==true){
-                                    if(helper.saveCodigo(codigo)){
+                                    if(helper.saveCodigo(codigo,mAuth.getCurrentUser().getUid() )){
                                         codigito.setText("");
                                         helper.saveCorreo(correo);
                                         Intent mainIntent = new Intent(CodigoActiviry.this,MapaActivity.class);
@@ -89,7 +92,7 @@ public class CodigoActiviry extends AppCompatActivity {
                                 }
                             }else{
                                 if (estado==true){
-                                    if(helper.saveCodigo(codigo)){
+                                    if(helper.saveCodigo(codigo, mAuth.getCurrentUser().getUid())){
                                         codigito.setText("");
                                         helper.saveCorreo(correo);
                                         Intent mainIntent = new Intent(CodigoActiviry.this,MapaActivity.class);

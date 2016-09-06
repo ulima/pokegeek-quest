@@ -43,7 +43,6 @@
             android:name=".Login.LoginActiviry"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".Menu.MenuActivity" />
         <activity android:name=".Codigo.CodigoActiviry"></activity>
     </application>
 
