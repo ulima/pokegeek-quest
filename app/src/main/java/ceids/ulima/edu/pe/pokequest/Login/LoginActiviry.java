@@ -31,6 +31,7 @@ import java.util.ArrayList;
 
 import ceids.ulima.edu.pe.pokequest.BaseActivity;
 import ceids.ulima.edu.pe.pokequest.Codigo.CodigoActiviry;
+import ceids.ulima.edu.pe.pokequest.DrawerActivity;
 import ceids.ulima.edu.pe.pokequest.R;
 import ceids.ulima.edu.pe.pokequest.beans.Correo;
 import ceids.ulima.edu.pe.pokequest.ui.mapa.MapaActivity;
@@ -192,7 +193,7 @@ public class LoginActiviry extends BaseActivity{
                                             }
                                         }
                                         if (estado==false){
-                                            Intent mainIntent = new Intent(LoginActiviry.this,MapaActivity.class);
+                                            Intent mainIntent = new Intent(LoginActiviry.this,DrawerActivity.class);
                                             LoginActiviry.this.startActivity(mainIntent);
                                             mainIntent.putExtra("correo",mAuth.getCurrentUser().getEmail());
                                             mainIntent.putExtra("foto",mAuth.getCurrentUser().getPhotoUrl());
