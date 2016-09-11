@@ -202,6 +202,7 @@ public class LoginActiviry extends BaseActivity{
                                             LoginActiviry.this.finish();
                                         }else{
                                             Intent mainIntent = new Intent(LoginActiviry.this,CodigoActiviry.class);
+                                            LoginActiviry.this.startActivity(mainIntent);
                                             mainIntent.putExtra("correo",mAuth.getCurrentUser().getEmail());
                                             mainIntent.putExtra("foto",mAuth.getCurrentUser().getPhotoUrl());
                                             LoginManager.getInstance().logOut();
@@ -210,6 +211,7 @@ public class LoginActiviry extends BaseActivity{
                                         }
                                     }else{
                                         Intent mainIntent = new Intent(LoginActiviry.this,CodigoActiviry.class);
+                                        LoginActiviry.this.startActivity(mainIntent);
                                         mainIntent.putExtra("correo",mAuth.getCurrentUser().getEmail());
                                         mainIntent.putExtra("foto",mAuth.getCurrentUser().getPhotoUrl());
                                         LoginManager.getInstance().logOut();

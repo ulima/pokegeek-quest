@@ -1,6 +1,7 @@
 package ceids.ulima.edu.pe.pokequest.Codigo;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,6 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+import ceids.ulima.edu.pe.pokequest.DrawerActivity;
 import ceids.ulima.edu.pe.pokequest.FirebaseHelper.FirebaseHelper;
 import ceids.ulima.edu.pe.pokequest.Login.LoginActiviry;
 import ceids.ulima.edu.pe.pokequest.R;
@@ -53,6 +55,7 @@ public class CodigoActiviry extends AppCompatActivity {
             public void onClick(View v) {
                 boton.setEnabled(false);
                 final String correito=getIntent().getStringExtra("correo").toString();
+                final Uri foto=getIntent().getParcelableExtra("foto");
                 final Correo correo=new Correo(correito);
                 final String codigoinput=codigito.getText().toString();
                 final Codigo codigo=new Codigo(codigoinput+ "=" + correito);
@@ -79,9 +82,10 @@ public class CodigoActiviry extends AppCompatActivity {
                                     if(helper.saveCodigo(codigo,mAuth.getCurrentUser().getUid() )){
                                         codigito.setText("");
                                         helper.saveCorreo(correo);
-                                        Intent mainIntent = new Intent(CodigoActiviry.this,MapaActivity.class);
+                                        Intent mainIntent = new Intent(CodigoActiviry.this,DrawerActivity.class);
                                         CodigoActiviry.this.startActivity(mainIntent);
                                         CodigoActiviry.this.finish();
+                                        mainIntent.putExtra("foto",foto);
                                         mainIntent.putExtra("correo",correito);
                                         startActivity(mainIntent);
                                     }
@@ -95,7 +99,7 @@ public class CodigoActiviry extends AppCompatActivity {
                                     if(helper.saveCodigo(codigo, mAuth.getCurrentUser().getUid())){
                                         codigito.setText("");
                                         helper.saveCorreo(correo);
-                                        Intent mainIntent = new Intent(CodigoActiviry.this,MapaActivity.class);
+                                        Intent mainIntent = new Intent(CodigoActiviry.this,DrawerActivity.class);
                                         CodigoActiviry.this.startActivity(mainIntent);
                                         CodigoActiviry.this.finish();
                                         mainIntent.putExtra("correo",correito);

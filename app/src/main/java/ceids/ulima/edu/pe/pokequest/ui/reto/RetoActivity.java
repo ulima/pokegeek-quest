@@ -268,12 +268,10 @@ public class RetoActivity extends AppCompatActivity {
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        int puntaje = Integer.parseInt(dataSnapshot.getValue().toString());
-
-                        HashMap<String, Object> map = new HashMap<>();
-                        map.put("puntaje", puntaje + 10);
-                        //map.put("pokeparadasRealizadas", pokeparadas.concat())
-                        database.getReference("usuarios").child(uid).updateChildren(map);
+                            int puntaje = Integer.parseInt(dataSnapshot.getValue().toString());
+                            HashMap<String, Object> map = new HashMap<>();
+                            map.put("puntaje", puntaje + 10);
+                            database.getReference("usuarios").child(uid).updateChildren(map);
                     }
 
                     @Override
@@ -288,10 +286,10 @@ public class RetoActivity extends AppCompatActivity {
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        String pokeparadasRealizadas = dataSnapshot.getValue().toString();
-                        HashMap<String, Object> map = new HashMap<>();
-                        map.put("pokeparadasRealizadas", pokeparadasRealizadas + codigo);
-                        database.getReference("usuarios").child(uid).updateChildren(map);
+                            String pokeparadasRealizadas = dataSnapshot.getValue().toString();
+                            HashMap<String, Object> map = new HashMap<>();
+                            map.put("pokeparadasRealizadas", pokeparadasRealizadas + codigo);
+                            database.getReference("usuarios").child(uid).updateChildren(map);
                     }
 
                     @Override
@@ -306,17 +304,16 @@ public class RetoActivity extends AppCompatActivity {
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        String pokeparadasRealizadas = dataSnapshot.getValue().toString();
-                        HashMap<String, Object> map = new HashMap<>();
-                        for(int i=0;i<pokeparadasRealizadas.length();i++){
-                            if(pokeparadasRealizadas.substring(i,i+32).equals(codigo)){
-                                Toast.makeText(RetoActivity.this,"Esta pokeparada ya la haz hecho",Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(RetoActivity.this, DrawerActivity.class);
-                                startActivity(intent);
-                                break;
-
-                            }
-                            i=i+32;
+                            String pokeparadasRealizadas = dataSnapshot.getValue().toString();
+                            HashMap<String, Object> map = new HashMap<>();
+                            for(int i=0;i<pokeparadasRealizadas.length();i++){
+                                if(pokeparadasRealizadas.substring(i,i+32).equals(codigo)){
+                                    Toast.makeText(RetoActivity.this,"Esta pokeparada ya la haz hecho",Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(RetoActivity.this, DrawerActivity.class);
+                                    startActivity(intent);
+                                    break;
+                                }
+                                i=i+32;
                         }
 
                     }
