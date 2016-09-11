@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:title="@string/salir"
-        android:id="@+id/menSalir" />
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/Mapa"
+            android:checked="false"
+            android:title="Mapa" />
+        <item
+            android:id="@+id/ranking"
+            android:checked="false"
+            android:title="Ranking" />
+        <item
+            android:id="@+id/Salir"
+            android:checked="false"
+            android:title="Salir" />
+
+    </group>
 </menu>
